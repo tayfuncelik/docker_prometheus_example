@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+  demoApp:
+    container_name: "container_name"
+    ports:
+      - "8080:8080"
+    image: "mytag/v1"
+  prometheus:
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    image: prom/prometheus
